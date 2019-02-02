@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" integrity="sha384-PmY9l28YgO4JwMKbTvgaS7XNZJ30MK9FAZjjzXtlqyZCqBY6X6bXIkM++IkyinN+" crossorigin="anonymous">
+
+    <title>VUEJs V2 AJAX | Rimorsoft Online</title>
+
+</head>
+
+<body>
+
+    <div id="main" class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h1>Lista VUEjs - AJAX</h1>
+                <ul class="list-group">
+                    <li v-for="item in lists" class="list-group-item">
+                        {{ item.name.first }} {{ item.name.last }}  {{ item.email }} 
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-8">
+                <h1>JSON</h1>
+                <pre>
+                    {{ $data }}
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+    
+    <script type="text/javascript">
+        var urlUsers='https://randomuser.me/api/?results=50';
+        new Vue({
+            el: '#main',
+            created: function(){
+                this.getUsers();
+            },
+            data: {
+                lists: []
+            },
+            methods: {
+                getUsers: function(){
+                    this.$http.get(urlUsers).then(function(response){
+                        this.lists = response.data.results;
+                    });
+                }
+            }
+
+        });
+    
+    </script>
+    
+</body>
+</html>
