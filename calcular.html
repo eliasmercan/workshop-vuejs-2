@@ -28,12 +28,18 @@
                 </div>
                 <div class="col-md-5">
                     <label for="">IVA:</label>
-                    <input type="number" v-model="iva" class="form-control">
-                </div>        
+                    <input type="number" v-model="iva" v-on:keyup="calcular" class="form-control">
+                </div>
+                <div class="col-md-5">
+                    <label for="">VALOR TOTAL:</label>
+                    <input type="number" v-model="valor" class="form-control" disabled>
+                </div>         
                 <button v-on:click="calcular" v-show="trm" class="btn btn-primary">Calcular</button>
-                    
                
-                <p v-bind:title="valortotal">ARANCEL... {{valor}}</p>
+                <p v-bind:title="valortotal">
+                    <h1>TOTAL: {{valor}} </h1>
+                </p>
+
             </div>
 
             <div class="col-12">
@@ -55,12 +61,13 @@
                 trm: '',
                 arancel: '',
                 iva: '',
-                valor: this.trm+this.arancel
+                valor: 1.33*1.4,
+                dos: ["elias", "juan" ]
 
             },
             methods: {
                 calcular: function(){
-                    this.valor= (this.arancel+this.iva)*this.trm
+                    this.valor=Math.round((this.arancel+this.iva)*this.trm)
                 }
             }
 

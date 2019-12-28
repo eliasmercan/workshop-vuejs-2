@@ -20,6 +20,7 @@
                     <li v-for="item in lists" class="list-group-item">
                         {{ item.name.first }} {{ item.name.last }}  {{ item.email }} 
                     </li>
+                    <li v-for="item in lists" class="list-group-item">Hola</li>
                 </ul>
             </div>
             <div class="col-sm-8">
@@ -35,7 +36,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     
     <script type="text/javascript">
-        var urlUsers='https://randomuser.me/api/?results=15';
+        var urlUsers='https://randomuser.me/api/?results=100';
         //var urlUsers='https://jsonplaceholder.typicode.com/users';
         new Vue({
             el: '#main',
